@@ -1,9 +1,11 @@
-"use strict";
+const mongoose = require("mongoose");
 
-var users = [];
+const connectDB = async () => {
+  const conn = await mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+  });
 
-users.push({ name: "Tobi" });
-users.push({ name: "Loki" });
-users.push({ name: "Jane" });
+  console.log(`MongoDB connection: ${conn.connection.host}`.green.bold);
+};
 
-module.exports = users;
+module.exports = { connectDB };
