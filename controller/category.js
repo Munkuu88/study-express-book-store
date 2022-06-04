@@ -1,37 +1,103 @@
-const getCategories = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    data: "All categories controller",
-  });
+const Category = require("../models/category");
+
+const getCategories = async (req, res, next) => {
+  try {
+    const categories = await Category.find();
+
+    res.status(200).json({
+      success: true,
+      data: categories,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err,
+    });
+  }
 };
 
-const getCategory = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    data: "Get one category",
-  });
+const getCategory = async (req, res, next) => {
+  try {
+    const category = await Category.findById(req.params.id);
+    if (!category) {
+      return res.status(400).json({
+        success: false,
+        error: `${req.params.id} get not found`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      data: category,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err,
+    });
+  }
 };
 
-const createCategory = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    data: "create category",
-  });
+const createCategory = async (req, res, next) => {
+  try {
+    const cateogry = await Category.create(req.body);
+
+    res.status(200).json({
+      success: true,
+      data: "create category",
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err,
+    });
+  }
 };
 
-const updateCategory = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    data: "Update category",
-  });
+const updateCategory = async (req, res, next) => {
+  try {
+    const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!category) {
+      return res.status(400).json({
+        success: false,
+        error: `${req.params.id} update not found`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      data: category,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err,
+    });
+  }
 };
 
-const deleteCategory = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    data: "Delete category",
-  });
+const deleteCategory = async (req, res, next) => {
+  try {
+    const category = await Category.findByIdAndDelete(req.params.id);
+    if (!category) {
+      return res.status(400).json({
+        success: false,
+        error: `${req.params.id} delete not found`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      data: category,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err,
+    });
+  }
 };
+
 module.exports = {
   getCategories,
   getCategory,

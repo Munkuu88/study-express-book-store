@@ -18,6 +18,8 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
 });
 
 const app = express();
+app.use(express.json());
+
 app.use(logger);
 app.use(morgan("combined", { stream: accessLogStream }));
 app.use("/api/v1/categories", categoriesRoutes);
