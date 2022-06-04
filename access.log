@@ -1,1 +1,2 @@
 ::1 - - [02/Jun/2022:05:18:00 +0000] "GET /api/v1/categories HTTP/1.1" 200 51 "-" "PostmanRuntime/7.29.0"
+::1 - - [04/Jun/2022:08:22:33 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36"
