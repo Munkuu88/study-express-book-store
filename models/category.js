@@ -28,6 +28,14 @@ const CategorySchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  averageRating: Number,
+  averagePrice: Number,
+});
+
+CategorySchema.pre("save", function (next) {
+  this.averageRating = Math.floor(Math.random() * 10) + 1;
+  this.averagePrice = Math.floor(Math.random() * 100000) + 3000;
+  next();
 });
 
 module.exports = mongoose.model("Category", CategorySchema);

@@ -1,10 +1,26 @@
 [
   {
     "_id": "629b661b0c98c1870e4c111d",
-    "name": "Oorchlogdson",
+    "name": "Lord of the rings",
     "description": "This Book's general is fantasy",
-    "image": "https://images-na.ssl-images-amazon.com/images/I/51kfFS5-fnL._SX332_BO1,204,203,200_.jpg",
-    "createdAt": "2022-06-04T14:02:29.079Z",
-    "__v": 0
+    "image": "https://images-na.ssl-images-amazon.com/images/I/51kfFS5-fnL._SX332_BO1,204,203,200_.jpg"
+  },
+  {
+    "_id": "629b661b0c98c1870e4c121d",
+    "name": "Hobbit",
+    "description": "This Book's general is fantasy",
+    "image": "https://images-na.ssl-images-amazon.com/images/I/51kfFS5-fnL._SX332_BO1,204,203,200_.jpg"
+  },
+  {
+    "_id": "629b661b0c98c1870e4c131d",
+    "name": "Hary potter",
+    "description": "This Book's general is fantasy",
+    "image": "https://images-na.ssl-images-amazon.com/images/I/51kfFS5-fnL._SX332_BO1,204,203,200_.jpg"
+  },
+  {
+    "_id": "629b661b0c98c1870e4c141d",
+    "name": "wizarding world",
+    "description": "This Book's general is fantasy",
+    "image": "https://images-na.ssl-images-amazon.com/images/I/51kfFS5-fnL._SX332_BO1,204,203,200_.jpg"
   }
 ]
