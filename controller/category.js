@@ -3,11 +3,30 @@ const { MyError } = require("../utils/myError");
 const asyncHandler = require("../middleware/asyncHandler");
 
 const getCategories = asyncHandler(async (req, res, next) => {
-  const categories = await Category.find();
+  const page = parseInt(req.query.page) || 1;
+  delete req.query.page;
+  const limit = parseInt(req.query.limit);
+  delete req.query.limit || 2;
+
+  total = await Category.countDocuments();
+  const pageCount = Math.ceil(total / limit);
+  const start = (page - 1) * limit + 1;
+  let end = start + limit - 1;
+  if (end > total) end = total;
+
+  const pagination = { total, pageCount, start, end };
+
+  if (page < pageCount) pagination.nextPage = page + 1;
+  if (page > 1) pagination.prevPage = page - 1;
+
+  const categories = await Category.find()
+    .skip(start - 1)
+    .limit(limit);
 
   res.status(200).json({
     success: true,
     data: categories,
+    pagination,
   });
 });
 
