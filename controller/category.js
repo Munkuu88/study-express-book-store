@@ -42,11 +42,11 @@ const getCategory = asyncHandler(async (req, res, next) => {
 });
 
 const createCategory = asyncHandler(async (req, res, next) => {
-  const cateogry = await Category.create(req.body);
+  const category = await Category.create(req.body);
 
   res.status(200).json({
     success: true,
-    data: "create category",
+    data: category,
   });
 });
 
